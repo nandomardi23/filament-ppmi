@@ -35,7 +35,7 @@ class DepartementResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('departement_name'),
+                TextColumn::make('departement_name')->sortable(),
                 TextColumn::make('head_of_departement'),
                 TextColumn::make('email')
 
@@ -46,6 +46,9 @@ class DepartementResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
